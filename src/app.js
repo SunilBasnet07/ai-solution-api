@@ -2,12 +2,16 @@ import express from "express"
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
 import userRoute from "./routes/userRoutes.js"
+import logger from "./middlewares/logger.js";
+import connectDB from "./config/database.js";
 
 dotenv.config();
 const app = express({ silent: true })
 const port = process.env.PORT;
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
+app.use(logger)
+connectDB();
 
 app.get('/',(req, res) => {
     res.json({

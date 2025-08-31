@@ -1,9 +1,7 @@
 import express from "express"
+import { createUser } from "../controllers/userController.js"
 
 const Router= express.Router()
 
-Router.post("/",(req,res)=>{
-    const data= req.body;
-    res.json(data);
-})
+Router.post("/",createUser)
 export default Router
