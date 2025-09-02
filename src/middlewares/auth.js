@@ -1,9 +1,10 @@
-import { verifyToken } from "../utils/jwt";
+import { verifyToken } from "../utils/jwt.js";
 
 const auth=(req,res,next)=>{
     const cookie = req.headers.cookie;
     if(!cookie) return res.status(401).send("User Unauthorized")
         const authToken= cookie.split("=")[1]
+   
     verifyToken(authToken).then((data)=>{
        req.user=data
        next()

@@ -2,6 +2,8 @@ import express from "express"
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
 import userRoute from "./routes/userRoutes.js"
+import contactRoute from "./routes/contactRoutes.js"
+import chatboxRoute from "./routes/chatRoutes.js"
 import authRoute from "./routes/authRoutes.js"
 import logger from "./middlewares/logger.js";
 import connectDB from "./config/database.js";
@@ -29,3 +31,5 @@ app.listen(port, () => {
 
 app.use("/api/users",userRoute);
 app.use("/api/auth",authRoute);
+app.use("/api/contact",contactRoute);
+app.use("/api/chatbox",chatboxRoute);
