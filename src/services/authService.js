@@ -47,12 +47,12 @@ const resetPassword = async (password, id, token) => {
             message: "Invalid token"
         }
     }
-    // if (data.expireAt > Date.now()) {
-    //     throw {
-    //         statusCode: 404,
-    //         message: "Token expired"
-    //     }
-    // }
+    if (data.expireAt > Date.now()) {
+        throw {
+            statusCode: 404,
+            message: "Token expired"
+        }
+    }
 
     const hashedPasword = bcrypt.hashSync(password, 10)
     await User.findByIdAndUpdate(data?.userId,{password: hashedPasword })

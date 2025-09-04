@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import { USER } from "../constants/roles.js";
 
 const userSchema = mongoose.Schema({
     username: {
@@ -26,6 +27,10 @@ const userSchema = mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now()
+    },
+    roles:{
+        type:[String],
+        default:[USER]
     }
 })
 const User = mongoose.model("User", userSchema)
